@@ -14,7 +14,7 @@ def fitness_function(grid: np.array, score: int):
     Return value of a board based on average tile value, score and number of empty tiles.
 
     :param grid: 2D array representing the 2048 board
-    :param score: Value of the ingame score
+    :param score: Value of the in-game score
     :return: evaluation of board
     """
     return np.sum(grid) / np.count_nonzero(grid) + score + np.size(grid[grid == 0])
@@ -23,10 +23,10 @@ def fitness_function(grid: np.array, score: int):
 
 def take_move(grid, score, move):
     """
-    Take a move in coresponding direction without spawning a new tile.
+    Take a move in corresponding direction without spawning a new tile.
 
     :param grid: 2D array representing the 2048 board
-    :param score: Value of the ingame score
+    :param score: Value of the in-game score
     :param move: Direction which way should the board be moved
     :return: New board and new score 
     """
@@ -48,11 +48,11 @@ def minimax(grid, score, depth, is_maximizing: bool, alpha = -np.inf, beta = np.
     Recursive minimax to evaluating the state of board based on it's children.
 
     :param grid: 2D array representing the 2048 board
-    :param score: Value of the ingame score
+    :param score: Value of the in-game score
     :param depth: Maximum value of recursion
     :param is_maximizing: Who is playing - true = player; false = game (spawning a tile)
     :param alpha: Best value that can a Maximizing player get in previous branches
-    :param beta: Best value that can a Minimazing player get in previous branches
+    :param beta: Best value that can a Minimizing player get in previous branches
     :param move: Direction which way should the board be moved
     :return: Best value that could be gained and string of a move direction to get it
     """
@@ -109,7 +109,7 @@ def minimax(grid, score, depth, is_maximizing: bool, alpha = -np.inf, beta = np.
 
 def run_minmax(TURN_LIMIT: int = 1_000) -> (formatted_data, np.array):
     """
-    Fully playes a game of 2048 by using Minimax algorithm.
+    Fully plays a game of 2048 by using Minimax algorithm.
     
     :param TURN_LIMIT: Maximum number of turns ai can take
     :return: Structure with data about the game and final grid 
