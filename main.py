@@ -8,5 +8,5 @@ from montecarlo import run_montecarlo
 
 if __name__ == '__main__':
     print("MAIN")
-    measure(run_montecarlo, 1000, 10)
+    measure(run_rightdown, 500, 30, True)
 

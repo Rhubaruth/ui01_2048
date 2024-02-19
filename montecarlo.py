@@ -65,7 +65,7 @@ def run_montecarlo(TURN_LIMIT: int = 1_000):
     """
     Fully playes a game of 2048 by using Monte Carlo Simulation.
     
-    :param TURN_LIMIT: Maximum number of turns ai can take
+    :param TURN_LIMIT: Maximum number of turns AI can take
     :return: Structure with data about the game and final grid
     """
     grid, score = new_game()
