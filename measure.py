@@ -56,11 +56,15 @@ def measure(fn, max_turns, num_tests = 3, silent: bool = False):
     print(f"outcome: {best_result.Outcome}")
     if best_grid is not None:
         print_grid(best_grid, best_result.Score)
+    for key, val in best_result.DirectionsUsed.items():
+        print(f"Turns {key}: {val} ({val / best_result.NumTurns * 100:.2f}%)")
 
     print(f"\nWorst solution found in {worst_result.NumTurns} turns")
     print(f"outcome: {worst_result.Outcome}")
     if worst_grid is not None:
         print_grid(worst_grid, worst_result.Score)
+    for key, val in worst_result.DirectionsUsed.items():
+        print(f"Turns {key}: {val} ({val / worst_result.NumTurns * 100:.2f}%)")
 
     print("\nAverage data")
     print(f"avg score: {tot_result.Score / num_tests:.3f}")

@@ -45,36 +45,45 @@ def run_rightdown(TURN_LIMIT: int = 1_000) -> (formatted_data, np.array):
     result_data.NumTurns = turn
     return result_data, grid
 
-# Best solution found in 332 turns
+# -------------------------------
+# Best solution found in 337 turns
 # outcome: 0
-# Score:  4120
+# Score:  4116
 # +----+----+----+----+
-# |   2|   4|   2|   8|
+# |   2|   4|   8|   2|
 # +----+----+----+----+
-# |   4|   8|  32|   2|
+# |   4|   8|   2|  32|
 # +----+----+----+----+
-# |   2|   4|  64| 128|
+# |   8|  16|  64| 128|
 # +----+----+----+----+
-# |  32|  64| 128| 256|
+# |  16|  64| 128| 256|
 # +----+----+----+----+
+# Turns up: 0 (0.00%)
+# Turns down: 145 (43.03%)
+# Turns right: 155 (45.99%)
+# Turns left: 36 (10.68%)
 #
-# Worst solution found in 89 turns
+# Worst solution found in 93 turns
 # outcome: 0
-# Score:  660
+# Score:  668
 # +----+----+----+----+
-# |   4|   2|   4|   2|
+# |   2|   4|   8|   2|
 # +----+----+----+----+
-# |   2|   4|   8|   4|
+# |   4|   8|   4|  16|
 # +----+----+----+----+
-# |   4|   8|  32|  64|
+# |   8|  16|  64|   2|
 # +----+----+----+----+
-# |   8|  32|   4|  16|
+# |  16|  32|   4|  16|
 # +----+----+----+----+
+# Turns up: 0 (0.00%)
+# Turns down: 40 (43.01%)
+# Turns right: 43 (46.24%)
+# Turns left: 9 (9.68%)
 #
 # Average data
-# avg score: 2320.800
-# avg turns: 213.200
-# avg time: 0.02s/game
+# avg score: 2185.733
+# avg turns: 202.667 (6080)
+# avg time: 0.04s/game
 #           0.00s/turn
 # wins: 0, losses: 30
 # not finished games: 0
@@ -82,6 +91,6 @@ def run_rightdown(TURN_LIMIT: int = 1_000) -> (formatted_data, np.array):
 # winrate (of all games):      0.00
 #
 # Turns up: 0 (0.00%)
-# Turns down: 2765 (43.23%)
-# Turns right: 3116 (48.72%)
-# Turns left: 485 (7.58%)
+# Turns down: 2654 (43.65%)
+# Turns right: 2923 (48.08%)
+# Turns left: 473 (7.78%)

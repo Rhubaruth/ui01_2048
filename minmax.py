@@ -45,7 +45,7 @@ def take_move(grid, score, move):
 
 def minimax(grid, score, depth, is_maximizing: bool, alpha = -np.inf, beta = np.inf) -> (float, str):
     """
-    Recursive minimax to evaluating the state of board based on it's children.
+    Recursive minimax to evaluating the state of board based on its children.
 
     :param grid: 2D array representing the 2048 board
     :param score: Value of the in-game score
@@ -115,7 +115,7 @@ def run_minmax(TURN_LIMIT: int = 1_000) -> (formatted_data, np.array):
     :return: Structure with data about the game and final grid 
     """
     grid, score = new_game()
-    outcome: OUTCOME = OUTCOME.NotComplete
+    result_data = formatted_data()
     turn: int = 0
 
     depth = 0
@@ -126,45 +126,76 @@ def run_minmax(TURN_LIMIT: int = 1_000) -> (formatted_data, np.array):
         # Set depth on higher value later in game or if getting close to filling up the board
         depth = MAX_DEPTH[0] if np.max(grid) < 1024 and np.count_nonzero(grid) < 14 else MAX_DEPTH[1]
         _, best_move = minimax(grid, score, depth, True)
+        if best_move in MOVES:
+            result_data.DirectionsUsed[best_move] += 1
 
         try:
             grid, score = play_2048(grid, best_move, score)
         except RuntimeError as inst:
             if str(inst) == "GO":
-                outcome = OUTCOME.Loss
+                result_data.Outcome = OUTCOME.Loss
             elif str(inst)== "WIN":
-                outcome = OUTCOME.Win
+                result_data.Outcome = OUTCOME.Win
             break
 
     # print()
     # print_grid(grid, score)
-    return formatted_data(
-        score=score,
-        outcome=outcome,
-        num_turns=turn
-    ), grid
+    result_data.Score = score
+    result_data.NumTurns = turn
+    return result_data, grid
 
 if __name__ == '__main__':
     print("MINMAX METHOD")
     measure(run_minmax, 1000, 30)
 
 
-# Best solution found in 975 turns
-# outcome: OUTCOME.Win
-# Score:  18324
+# -------------------------------------------------------
+#
+# Best solution found in 974 turns
+# outcome: 2
+# Score:  18488
 # +----+----+----+----+
-# |    |    |    |   2|
+# |    |    |    |   4|
 # +----+----+----+----+
-# |    |    |    |    |
+# |    |    |    |  32|
 # +----+----+----+----+
-# |    |    |  16|2048|
+# |    |   2|   4|   4|
 # +----+----+----+----+
-# |   2|  32|  16|   4|
+# |    |  16|2048|  64|
 # +----+----+----+----+
+# Turns up: 47 (12.40%)
+# Turns down: 106 (27.97%)
+# Turns right: 173 (45.65%)
+# Turns left: 52 (13.72%)
+#
+# Worst solution found in 379 turns
+# outcome: 0
+# Score:  5388
+# +----+----+----+----+
+# |   2|   8|  16|   2|
+# +----+----+----+----+
+# |  16|  32| 512|   8|
+# +----+----+----+----+
+# |   4|   8|  64| 128|
+# +----+----+----+----+
+# |   2|  16|   8|   4|
+# +----+----+----+----+
+# Turns up: 47 (12.40%)
+# Turns down: 106 (27.97%)
+# Turns right: 173 (45.65%)
+# Turns left: 52 (13.72%)
 #
 # Average data
-# avg score: 13931.47
-# avg turns: 810.17
-# avg time: 152.35s/game
-#           0.19s/turn
-# wins/finished: 8/30 = 0.267
+# avg score: 13383.467
+# avg turns: 792.600 (23778)
+# avg time: 187.30s/game
+#           0.24s/turn
+# wins: 5, losses: 22
+# not finished games: 3
+# winrate (of finished games): 0.19
+# winrate (of all games):      0.17
+#
+# Turns up: 3535 (14.87%)
+# Turns down: 6661 (28.01%)
+# Turns right: 9444 (39.72%)
+# Turns left: 4116 (17.31%)

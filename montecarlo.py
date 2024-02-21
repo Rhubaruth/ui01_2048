@@ -69,12 +69,12 @@ def run_montecarlo(TURN_LIMIT: int = 1_000):
     :return: Structure with data about the game and final grid
     """
     grid, score = new_game()
-    outcome: OUTCOME = OUTCOME.NotComplete
+    result_data = formatted_data()
     turn: int = 0
 
     while turn < TURN_LIMIT:
         if check_game_over(grid):
-            outcome = OUTCOME.Loss
+            result_data.Outcome = OUTCOME.Loss
             break
 
         turn += 1
@@ -109,27 +109,21 @@ def run_montecarlo(TURN_LIMIT: int = 1_000):
 
         # take a turn according to best move
         try:
-#            if best_move == '':
-#                return formatted_data(
-#                    score=score,
-#                    outcome=outcome,
-#                    num_turns=turn
-#                ), grid
+            if not best_move in MOVES:
+                raise ValueError('Invalid Move')
 
             grid, score = play_2048(grid, best_move, score)
+            result_data.DirectionsUsed[best_move] += 1
         except RuntimeError as inst:
             if str(inst) == "GO":
-                outcome = OUTCOME.Loss
+                result_data.Outcome = OUTCOME.Loss
             elif str(inst) == "WIN":
-                outcome = OUTCOME.Win
+                result_data.Outcome = OUTCOME.Win
             break
 
-
-    return formatted_data(
-        score=score,
-        outcome=outcome,
-        num_turns=turn
-    ), grid
+    result_data.Score = score
+    result_data.NumTurns = turn
+    return result_data, grid
 
 
 if __name__ == '__main__':
