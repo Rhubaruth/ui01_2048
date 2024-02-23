@@ -5,7 +5,7 @@ import numpy as np
 from measure import measure
 from data_format import formatted_data, OUTCOME
 
-NUM_SIMULATIONS = 20
+NUM_SIMULATIONS = 25
 SIMULATION_DEPTH = 100
 
 
@@ -131,22 +131,55 @@ if __name__ == '__main__':
     measure(run_montecarlo, 1000, 30)
 
 
-# Best solution found in 985 turns
-# outcome: OUTCOME.Win
-# Score:  18364
+# -------------------------------------------------------
+#
+# Best solution found in 989 turns
+# outcome: 2
+# Score:  18520
 # +----+----+----+----+
-# |    |   2|    |    |
+# |   4|   2|   4|   2|
 # +----+----+----+----+
-# |   2|   4|    |   4|
+# |    |   4|  64|2048|
 # +----+----+----+----+
-# |  16|  32|   4|  16|
+# |    |   2|  32|   2|
 # +----+----+----+----+
-# |   2|  16|2048|   4|
+# |    |    |    |   2|
 # +----+----+----+----+
+# Turns up: 246 (24.87%)
+# Turns down: 233 (23.56%)
+# Turns right: 258 (26.09%)
+# Turns left: 251 (25.38%)
+#
+# Worst solution found in 145 turns
+# outcome: 0
+# Score:  1404
+# +----+----+----+----+
+# |   2|   4|   8|   2|
+# +----+----+----+----+
+# |   4|  64|  32|   4|
+# +----+----+----+----+
+# |   2|  32| 128|   8|
+# +----+----+----+----+
+# |   4|   8|  16|   2|
+# +----+----+----+----+
+# Turns up: 31 (21.38%)
+# Turns down: 40 (27.59%)
+# Turns right: 38 (26.21%)
+# Turns left: 36 (24.83%)
 #
 # Average data
-# avg score: 14872.0
-# avg turns: 841.2333333333333
-# avg time: 193.27s/game
-#           0.23s/turn
-# wins/finished: 11/30 = 0.367
+# avg score: 14517.600
+# avg turns: 821.733 (24652)
+# avg time: 263.83s/game
+#           0.32s/turn
+# wins: 12, losses: 18
+# not finished games: 0
+# winrate (of finished games): 0.40
+# winrate (of all games):      0.40
+#
+# Turns up: 6126 (24.85%)
+# Turns down: 6160 (24.99%)
+# Turns right: 6123 (24.84%)
+# Turns left: 6231 (25.28%)
+#
+# Process finished with exit code 0
