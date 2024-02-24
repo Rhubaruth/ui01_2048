@@ -5,7 +5,7 @@ from game import *
 from measure import measure
 from data_format import formatted_data, OUTCOME
 
-MOVE_SIMULATIONS = 10
+MOVE_SIMULATIONS = 12
 MAX_DEPTH = (3, 7)
 
 
@@ -151,51 +151,53 @@ if __name__ == '__main__':
 
 # -------------------------------------------------------
 #
-# Best solution found in 974 turns
+# Best solution found in 983 turns
 # outcome: 2
-# Score:  18488
+# Score:  18348
 # +----+----+----+----+
-# |    |    |    |   4|
+# |    |   4|    |    |
 # +----+----+----+----+
-# |    |    |    |  32|
+# |    |  16|  16|   4|
 # +----+----+----+----+
-# |    |   2|   4|   4|
+# |   4|   4|2048|   2|
 # +----+----+----+----+
-# |    |  16|2048|  64|
+# |  32|   2|   4|  16|
 # +----+----+----+----+
-# Turns up: 47 (12.40%)
-# Turns down: 106 (27.97%)
-# Turns right: 173 (45.65%)
-# Turns left: 52 (13.72%)
+# Turns up: 150 (15.26%)
+# Turns down: 268 (27.26%)
+# Turns right: 367 (37.33%)
+# Turns left: 198 (20.14%)
 #
-# Worst solution found in 379 turns
+# Worst solution found in 444 turns
 # outcome: 0
-# Score:  5388
+# Score:  6256
 # +----+----+----+----+
-# |   2|   8|  16|   2|
+# |   2|  32| 128| 512|
 # +----+----+----+----+
-# |  16|  32| 512|   8|
+# |   4|   8|  64|   8|
 # +----+----+----+----+
-# |   4|   8|  64| 128|
+# |  16|  32| 128|  32|
 # +----+----+----+----+
-# |   2|  16|   8|   4|
+# |   4|   8|   2|   4|
 # +----+----+----+----+
-# Turns up: 47 (12.40%)
-# Turns down: 106 (27.97%)
-# Turns right: 173 (45.65%)
-# Turns left: 52 (13.72%)
+# Turns up: 65 (14.64%)
+# Turns down: 109 (24.55%)
+# Turns right: 194 (43.69%)
+# Turns left: 75 (16.89%)
 #
 # Average data
-# avg score: 13383.467
-# avg turns: 792.600 (23778)
-# avg time: 187.30s/game
-#           0.24s/turn
-# wins: 5, losses: 22
-# not finished games: 3
-# winrate (of finished games): 0.19
-# winrate (of all games):      0.17
+# avg score: 13299.733
+# avg turns: 785.867 (23576)
+# avg time: 326.22s/game
+#           0.42s/turn
+# wins: 6, losses: 23
+# not finished games: 1
+# winrate (of finished games): 0.21
+# winrate (of all games):      0.20
 #
-# Turns up: 3535 (14.87%)
-# Turns down: 6661 (28.01%)
-# Turns right: 9444 (39.72%)
-# Turns left: 4116 (17.31%)
+# Turns up: 3570 (15.14%)
+# Turns down: 6550 (27.78%)
+# Turns right: 9331 (39.58%)
+# Turns left: 4102 (17.40%)
+#
+# Process finished with exit code 0
